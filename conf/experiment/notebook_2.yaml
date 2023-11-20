@@ -1,0 +1,5 @@
+# @package _global_
+
+# Resume Params
+# Replace [path_to_code], [Date], [Time] with your own path made by the first notebook.
+resume_checkpoint_prior: /[path_to_code]/outputs/GenFL_Prior/[Date]/[Time]/+scenario=perez_prior # Mandatory

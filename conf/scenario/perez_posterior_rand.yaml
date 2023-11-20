@@ -1,0 +1,35 @@
+# @package _global_
+
+# Model Params
+model_name: ProbNNet4lPerez
+learning_rate: 1e-3
+optimizer_name: SGD
+momentum: 0.95
+samples_ensemble: 1 # choices=[1, 10, 100], Can slow down the evaluation by a lot if too big (several hours)
+dropout_prob: 0.2
+
+# Prior Params
+prior_type: "rand" # choices=["rand", "learnt"]
+sigma_prior: 0.025
+prior_dist: "gaussian" # choices=["gaussian", "laplace"]
+
+# Data Params
+perc_train: 1.0
+perc_val: 0.0
+
+# PAC-Bayes Bound Params
+pbobj:
+  objective: "fclassic" # choices=["fquad", "flamb", "fclassic", "bbb"]
+  pmin: 1e-4 # choices=[1e-5, 1e-4, 1e-3, 1e-2]
+  classes: 10
+  delta: 0.05
+  delta_test: 0.01
+  mc_samples: 1 # choices=[1, 100, 1000, 150_000], Can slow down the evaluation by a lot if too big (several days), 1 give irrelevant results
+  kl_penalty: 1. # choices=[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0]
+  n_posterior: null # Will be determined automatically from the partition
+  n_bound: null # Will be determined automatically from the partition
+
+# # Others
+# initial_lambda_var: 6.0
+# learning_rate_lambda: ${learning_rate}
+# momentum_lambda: ${momentum}

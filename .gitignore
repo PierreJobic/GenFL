@@ -1,0 +1,22 @@
+# Specifics extensions
+*.pyc
+*.pickle
+*test*
+
+environment.yml
+MyEnvironment.yaml
+requrested.txt
+print_config.py
+
+
+# Sub directories
+/outputs
+# # And if you want the `base_dir` in config
+/multirun
+/trash
+/slurm
+/paper
+
+# pycache
+/__pycache__
+/core/__pycache__

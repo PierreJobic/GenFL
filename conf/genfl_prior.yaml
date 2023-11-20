@@ -1,0 +1,52 @@
+# @package _global_
+
+defaults:
+  - override hydra/job_logging: colorlog
+  - override hydra/job_logging: custom
+  - override hydra/hydra_logging: colorlog
+  - _self_
+
+my_excludes:
+  # experiment: experiment*
+  name: name
+  self: my_excludes
+
+hydra:
+  sweep:
+    dir: ${base_dir}/${name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: "${hydra.job.num}_${my_subdir_suffix: ${hydra.overrides.task}, ${oc.dict.values:my_excludes}}"
+  run:
+    dir: "${base_dir}/${name}/${now:%Y-%m-%d}/${now:%H-%M-%S}/${my_subdir_suffix: ${hydra.overrides.task}, ${oc.dict.values:my_excludes}}"
+
+
+# Directories Params
+name: GenFL_Prior
+base_dir: outputs
+
+# Data Params
+name_data: "MNIST"
+data_path: ~/data
+partition_type: "exact_iid"
+perc_data: 1.0
+perc_train: 0.5 # This is the percentage of the training set
+perc_val: 0.5 # This is the percentage of the validation set (validation set is the prior set in prior setting)
+perc_test: 0.0
+batch_size_client: 25
+batch_size_server: 250
+logistic: False
+
+# FL Params
+num_clients: 100
+client_fraction: 0.1
+fraction_evaluate: 0.1
+num_rounds: 100
+num_epochs: 5
+
+# Monitoring Params
+evaluate_client_every_n_rounds: 1
+evaluate_server_every_n_rounds: 5
+save_every_n_rounds: 1
+dryrun: False
+
+# Others
+seed: 42

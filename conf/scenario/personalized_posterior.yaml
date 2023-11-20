@@ -1,0 +1,42 @@
+# @package _global_
+
+objective: personalized
+
+# Prior Params
+resume_checkpoint_prior: null # Mandatory
+prior_type: learnt
+sigma_prior: 0.025
+prior_dist: "gaussian" # choices=["gaussian", "laplace"]
+
+# Specific to Personalized
+is_local_pbobj_cfg: True
+num_rounds: 1 # No round, no more communication in this personalization steps
+client_fraction: 1. # Every clients will train during the unique round
+fraction_evaluate: 1. # Every clients will evaluate during the unique round
+
+# Model Params
+model_name: ProbNNet4lPerez
+optimizer_name: SGD
+learning_rate: 1e-3
+momentum: 0.95
+batch_size_client: 10
+num_epochs: 10
+
+# Monitoring Params
+toolarge: False
+evaluate_client_every_n_rounds: null
+evaluate_server_every_n_rounds: null
+compute_risk_certificates_every_n_rounds: ${num_rounds}
+compute_client_risk_certificates_every_n_rounds: ${num_rounds}
+
+# PAC-Bayes Bound Params
+pbobj:
+  objective: "fclassic" # choices=["fquad", "flamb", "fclassic", "bbb"]
+  pmin: 1e-4 # choices=[1e-5, 1e-4, 1e-3, 1e-2]
+  classes: 10
+  delta: 0.05
+  delta_test: 0.01
+  mc_samples: 1 # choices=[1, 100, 1000, 150_000], Can slow down the evaluation by a lot if too big (several days), 1 give irrelevant results
+  kl_penalty: 1. # choices=[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0]
+  n_posterior: null # Will be determined automatically from the partition
+  n_bound: null # Will be determined automatically from the partition

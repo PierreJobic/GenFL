@@ -1,0 +1,11 @@
+# @package _global_
+
+
+# my_excludes:
+#   experiment: experiment*
+
+hydra:
+  sweeper:
+    params:
+      pbobj.objective: fclassic, fquad
+      seed: 0, 1, 2, 3, 4

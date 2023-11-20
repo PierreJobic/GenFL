@@ -1,0 +1,42 @@
+# @package _global_
+
+# Resume Params
+resume_checkpoint_prior: null # Mandatory
+
+# Model Params
+model_name: ProbNNet4lDziugaite
+learning_rate: 1e-3
+optimizer_name: RMSProp
+momentum: 0.95
+samples_ensemble: 1 # choices=[1, 10, 100], Can slow down the evaluation by a lot if too big (several hours)
+dropout_prob: 0.2
+
+# Data Params
+perc_train: 1.0
+perc_val: 0.0
+
+# Prior Params
+prior_type: "learnt" # choices=["learnt"]
+# sigma_prior: 1e-3
+log_lambda_prior: -3.0
+
+# Data Params
+logistic: True
+
+# PAC-Bayes Bound Params
+pbobj:
+  objective: bre
+  pmin: null # choices=[null]
+  classes: 1
+
+  # Dziugaite parameters
+  log_prior_std_base: 0.1
+  log_prior_std_precision: 100
+  
+  delta: 0.05
+  delta_test: 0.01
+  mc_samples: 1 # choices=[1, 100, 1000, 150_000], Can slow down the evaluation by a lot if too big (several days), 1 give irrelevant results
+  kl_penalty: 1. # choices=[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1e-0]
+  n_posterior: null # Will be determined automatically from the partition
+  n_bound: null # Will be determined automatically from the partition
+

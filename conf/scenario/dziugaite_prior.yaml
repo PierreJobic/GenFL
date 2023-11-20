@@ -1,0 +1,20 @@
+# @package _global_
+
+# Model Params
+model_name: NNet4lDziugaite
+optimizer_name_prior: SGD
+learning_rate_prior: 5e-3
+momentum_prior: 0.99
+num_epochs_prior: 5
+num_rounds_prior: 100
+dropout_prob: 0.2
+
+# Data Params
+perc_train: 1.0
+perc_val: 0.0
+
+# Prior Params
+prior_type: "learnt"
+
+# Data Params
+logistic: True
