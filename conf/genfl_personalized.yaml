@@ -26,7 +26,7 @@ name: GenFL_Personalized
 base_dir: outputs
 
 # Data Params
-name_data: "MNIST"
+data_name: "MNIST"
 data_path: ~/data
 partition_type: random_non_iid # Same partition as in "Communication-Efficient Learning of ...", McMahan et al., 2017
 perc_data: 1.0

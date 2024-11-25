@@ -24,7 +24,7 @@ name: GenFL_Posterior
 base_dir: outputs
 
 # Data Params
-name_data: "MNIST"
+data_name: "MNIST"
 data_path: ~/data
 partition_type: "exact_iid"
 perc_data: 1.0

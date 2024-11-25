@@ -72,7 +72,7 @@ def runexp(cfg: DictConfig):
         net0.load_state_dict(dict_to_load["model"])
 
         # Datasets must be the same, so that trainsets and prior_sets are the same
-        assert cfg.name_data == old_cfg.name_data
+        assert cfg.data_name == old_cfg.data_name
         assert cfg.partition_type == old_cfg.partition_type
         assert cfg.perc_data == old_cfg.perc_data
         if not ("Dziugaite" in cfg.model_name):
